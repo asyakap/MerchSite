@@ -14,7 +14,7 @@
 
 # Component Diagram
 
-![component diagram](diagram.jpg)
+TBD
 
 ### Setup/Installation Requirements:
 
