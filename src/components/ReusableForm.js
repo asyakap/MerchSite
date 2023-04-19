@@ -8,14 +8,14 @@ export default function ReusableForm(props) {
         <input
           type='text'
           name='name'
-          placeholder='Item Name' />
+          placeholder='Item Name' /><br />
         <input
           type='number'
           name='quantity'
-          placeholder='1' />
+          placeholder='1' /><br />
         <textarea
           name='description'
-          placeholder='Item Description' />
+          placeholder='Item Description' /><br />
         <button type='submit'>{props.buttonText}</button>
       </form>
     </React.Fragment>

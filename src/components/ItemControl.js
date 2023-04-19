@@ -3,6 +3,8 @@ import NewItemForm from './NewItemForm';
 import ItemList from './ItemList';
 import EditItemForm from './EditItemForm';
 import ItemDetail from './ItemDetail';
+// import Button from 'react-bootstrap/Button';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class ItemControl extends React.Component {
 
@@ -64,11 +66,21 @@ class ItemControl extends React.Component {
     this.setState({selectedItem: selectedItem});
   }
 
-  // resetState =() => {
-  //   this.setState({mainItemList: []})
-  // }
+  handleBuyClick = (id) => {
+    let selectedItem = this.state.mainItemList.find(item => item.id === id);
+    selectedItem.quantity -= 1;
+    const newMainItemList = this.state.mainItemList.map((item) => { return item.id === id ? selectedItem : item});
+    this.setState({mainItemList: newMainItemList});
+  }
 
-  render(){
+  handleRestockClick = (id, stock) => {
+    let selectedItem = this.state.mainItemList.find(item => item.id === id);
+    selectedItem.quantity += stock;
+    const newMainItemList = this.state.mainItemList.map((item => { return item.id === id? selectedItem : item}));
+    this.setState({mainItemList: newMainItemList});
+  }
+
+  render() {
     let currentlyVisibleState = null;
     let buttonText = null; 
     if (this.state.editing ) {      
@@ -78,13 +90,15 @@ class ItemControl extends React.Component {
       currentlyVisibleState = <ItemDetail 
       item={this.state.selectedItem} 
       onClickingDelete={this.handleDeletingItem}
-      onClickingEdit = {this.handleEditClick} />
+      onClickingEdit = {this.handleEditClick} 
+      onBuyItem = { this.handleBuyClick}
+      onRestockItem = {this.handleRestockClick} />
       buttonText = "Return to Item List";
     } else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <NewItemForm onNewItemCreation={this.handleAddingNewItemToList}/>;
       buttonText = "Return to Item List"; 
     } else {
-      currentlyVisibleState = <ItemList onItemSelection={this.handleChangingSelectedItem} itemList={this.state.mainItemList} />;
+      currentlyVisibleState = <ItemList onItemSelect={this.handleChangingSelectedItem} itemList={this.state.mainItemList} />;
       buttonText = "Add Item"; 
     }
     return (

@@ -9,10 +9,13 @@ function ItemList(props) {
       <hr/>
       {props.itemList.map((item) =>
         <Item
-          whenItemClicked = { props.onItemSelection }
+          // whenItemClicked = { props.onItemSelection }
           name={item.name}
           quantity={item.quantity}
           description={item.description}
+          onBuyItem={props.onBuyItem}
+          onResotckItem={props.onResotckItem}
+          onItemSelect={props.onItemSelect}
           id={item.id}
           key={item.id}/>
       )}
@@ -22,7 +25,9 @@ function ItemList(props) {
 
 ItemList.propTypes = {
   itemList: PropTypes.array,
-  onItemSelection: PropTypes.func
+  onBuyItem: PropTypes.func,
+  onRestockItem: PropTypes.func,
+  onItemSelect: PropTypes.func
 };
 
 export default ItemList;
