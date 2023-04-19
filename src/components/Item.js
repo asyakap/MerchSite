@@ -14,14 +14,14 @@ function Item(props){
 
   let itemDisplay = null;
   if (props.quantity <= 0) {
-    itemDisplay = <h3>{props.name} is <strong>Out of Stock</strong></h3>
+    itemDisplay = <h4>{props.name} is <strong>Out of Stock</strong></h4>
   } else {
     itemDisplay =
     <>
     <h3>Name: {props.name}</h3><br />
     <li>Description: {props.description}</li><br />
     <li> Quantity Available: {props.quantity}</li>
-    <button className="btn btn-block btn-lg btn-dark" onClick={handleClick}>Buy</button>
+    <button className="btn btn-block btn-lg btn-dark" onClick={() => handleClick}>Buy</button>
     </>
   }
 
@@ -43,7 +43,6 @@ Item.propTypes = {
   quantity: PropTypes.number,
   description: PropTypes.string,
   id: PropTypes.string,
-  whenItemClicked: PropTypes.func,
   onBuyItem: PropTypes.func,
   onRestockItem: PropTypes.func,
   onItemSelect: PropTypes.func

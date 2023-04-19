@@ -3,6 +3,7 @@ import NewItemForm from './NewItemForm';
 import ItemList from './ItemList';
 import EditItemForm from './EditItemForm';
 import ItemDetail from './ItemDetail';
+import Item from './Item';
 // import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -56,20 +57,34 @@ class ItemControl extends React.Component {
   }
 
   handleAddingNewItemToList = (newItem) => {
+    console.log("we are here");
     const newMainItemList = this.state.mainItemList.concat(newItem);
     this.setState({mainItemList: newMainItemList});
     this.setState({formVisibleOnPage: false});
   }
 
   handleChangingSelectedItem = (id) => {
-    const selectedItem = this.state.mainItemList.filter(item => item.id === id)[0];
+    let selectedItem = this.state.mainItemList.filter(item => item.id === id)[0];
     this.setState({selectedItem: selectedItem});
   }
 
+  // handleEditingItemInList = (itemToEdit) => {
+  //   const editedMainItemList = this.state.mainItemList
+  //     .filter(item => item.id !== this.state.selectedItem.id)
+  //     .concat(itemToEdit);
+  //   this.setState({
+  //     mainItemList: editedMainItemList,
+  //     editing: false,
+  //     selectedItem: null
+  //   });
+  // }
+
   handleBuyClick = (id) => {
+    console.log("we are here");
     let selectedItem = this.state.mainItemList.find(item => item.id === id);
     selectedItem.quantity -= 1;
     const newMainItemList = this.state.mainItemList.map((item) => { return item.id === id ? selectedItem : item});
+    console.log(selectedItem.quantity);
     this.setState({mainItemList: newMainItemList});
   }
 
@@ -90,15 +105,17 @@ class ItemControl extends React.Component {
       currentlyVisibleState = <ItemDetail 
       item={this.state.selectedItem} 
       onClickingDelete={this.handleDeletingItem}
-      onClickingEdit = {this.handleEditClick} 
-      onBuyItem = { this.handleBuyClick}
-      onRestockItem = {this.handleRestockClick} />
+      onClickingEdit = {this.handleEditClick} />
       buttonText = "Return to Item List";
     } else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <NewItemForm onNewItemCreation={this.handleAddingNewItemToList}/>;
       buttonText = "Return to Item List"; 
     } else {
-      currentlyVisibleState = <ItemList onItemSelect={this.handleChangingSelectedItem} itemList={this.state.mainItemList} />;
+      currentlyVisibleState = <ItemList 
+      itemList={this.state.mainItemList}
+      onBuyItem = { this.handleBuyClick}
+      onRestockItem = {this.handleRestockClick}
+      onItemSelect={this.handleChangingSelectedItem}   />;
       buttonText = "Add Item"; 
     }
     return (
