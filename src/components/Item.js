@@ -21,7 +21,7 @@ function Item(props){
     <>
     <h3>Name: {props.name}</h3><br />
     <li>Description: {props.description}</li><br />
-    <li> Quantity Available: {props.quantity}</li>
+    <li>Quantity Available: {props.quantity}</li>
     <button className="btn btn-block btn-lg btn-dark" onClick={handleClick}>Buy</button>
     </>
   }

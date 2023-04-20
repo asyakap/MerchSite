@@ -3,8 +3,6 @@ import NewItemForm from './NewItemForm';
 import ItemList from './ItemList';
 import EditItemForm from './EditItemForm';
 import ItemDetail from './ItemDetail';
-import Item from './Item';
-// import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class ItemControl extends React.Component {
