@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 function Item(props){
 
   function handleClick() {
-    console.log("handleClickinItem.js");
     return props.onBuyItem(props.id);
   }
 
@@ -34,7 +33,7 @@ function Item(props){
       </div>
       <form onSubmit={handleSubmit}>
         <input type="number" min="1" max="100" name="quantity" className="form-control"/>
-      <button>Restock</button>
+      <button class="btn btn-outline-dark">Restock</button>
       </form>
     </React.Fragment>
   );

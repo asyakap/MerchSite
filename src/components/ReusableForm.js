@@ -16,7 +16,7 @@ export default function ReusableForm(props) {
         <textarea
           name='description'
           placeholder='Item Description' /><br />
-        <button type='submit'>{props.buttonText}</button>
+        <button class="btn btn-light" type='submit'>{props.buttonText}</button>
       </form>
     </React.Fragment>
   );

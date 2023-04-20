@@ -68,19 +68,7 @@ class ItemControl extends React.Component {
     this.setState({selectedItem: selectedItem});
   }
 
-  // handleEditingItemInList = (itemToEdit) => {
-  //   const editedMainItemList = this.state.mainItemList
-  //     .filter(item => item.id !== this.state.selectedItem.id)
-  //     .concat(itemToEdit);
-  //   this.setState({
-  //     mainItemList: editedMainItemList,
-  //     editing: false,
-  //     selectedItem: null
-  //   });
-  // }
-
   handleBuyClick = (id) => {
-    console.log("we are here");
     let selectedItem = this.state.mainItemList.find(item => item.id === id);
     selectedItem.quantity -= 1;
     const newMainItemList = this.state.mainItemList.map((item) => { return item.id === id ? selectedItem : item});
@@ -122,7 +110,7 @@ class ItemControl extends React.Component {
     return (
       <React.Fragment>
         {currentlyVisibleState}
-        <button onClick={this.handleClick}>{buttonText}</button> 
+        <button class="btn btn-secondary" onClick={this.handleClick}>{buttonText}</button> 
       </React.Fragment>
     );
   }

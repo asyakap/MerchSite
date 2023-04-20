@@ -10,8 +10,8 @@ function ItemDetail(props){
       <h1>Item Details</h1><br />
       <h3>{item.name} - {item.quantity}</h3><br />
       <p><em>{item.description}</em></p><br />
-      <button onClick={ props.onClickingEdit }>Update Item</button> <br />
-      <button onClick={()=> onClickingDelete(item.id) }>Delete Item</button> 
+      <button class="btn btn-light" onClick={ props.onClickingEdit }>Update Item</button> <br />
+      <button class="btn btn-light" onClick={()=> onClickingDelete(item.id) }>Delete Item</button> 
       <hr/>
     </React.Fragment>
   );
