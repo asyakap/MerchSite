@@ -112,6 +112,7 @@ class ItemControl extends React.Component {
       buttonText = "Return to Item List"; 
     } else {
       currentlyVisibleState = <ItemList 
+      item={this.state.selectedItem} 
       itemList={this.state.mainItemList}
       onBuyItem = { this.handleBuyClick}
       onRestockItem = {this.handleRestockClick}

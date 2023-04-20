@@ -14,7 +14,7 @@ function ItemList(props) {
           quantity={item.quantity}
           description={item.description}
           onBuyItem={props.onBuyItem}
-          onResotckItem={props.onResotckItem}
+          onRestockItem={props.onRestockItem}
           onItemSelect={props.onItemSelect}
           id={item.id}
           key={item.id}/>

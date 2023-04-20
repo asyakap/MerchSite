@@ -7,7 +7,7 @@ function ItemDetail(props){
 
   return (
     <React.Fragment>
-      <h1>Item Detail</h1><br />
+      <h1>Item Details</h1><br />
       <h3>{item.name} - {item.quantity}</h3><br />
       <p><em>{item.description}</em></p><br />
       <button onClick={ props.onClickingEdit }>Update Item</button> <br />
